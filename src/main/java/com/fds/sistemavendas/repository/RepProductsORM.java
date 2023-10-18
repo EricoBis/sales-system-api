@@ -1,5 +1,6 @@
 package com.fds.sistemavendas.repository;
 
-public class RepProductsORM {
+import com.fds.sistemavendas.repository.IRepProducts;
+public class RepProductsORM implements IRepProducts {
     
 }

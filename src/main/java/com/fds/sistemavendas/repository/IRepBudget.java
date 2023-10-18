@@ -1,5 +1,5 @@
 package com.fds.sistemavendas.repository;
 
-public class IRepBudget {
+public interface IRepBudget {
     
 }

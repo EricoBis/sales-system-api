@@ -1,5 +1,5 @@
 package com.fds.sistemavendas.repository;
 
-public class IRepItemStorage {
+public interface IRepItemStorage {
     
 }

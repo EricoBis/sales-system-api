@@ -1,5 +1,7 @@
 package com.fds.sistemavendas.repository;
 
-public class RepItemStorage {
+import com.fds.sistemavendas.repository.IRepItemStorage;
+
+public class RepItemStorage implements IRepItemStorage{
     
 }

@@ -27,6 +27,10 @@ public class Budget {
         this.items = items;
     }
 
+    public void setDone(boolean done) {
+        this.done = done;
+    }
+
     public Long getId() {
         return id;
     }

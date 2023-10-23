@@ -1,29 +1,27 @@
 package com.fds.sistemavendas.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Product {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
     private String description;
     private double price;
 
-    public Product(Long id, String description, double price) {
+    public Product(long id, String description, double price) {
         this.id = id;
         this.description = description;
         this.price = price;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

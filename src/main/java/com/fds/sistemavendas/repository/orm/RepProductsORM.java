@@ -2,6 +2,7 @@ package com.fds.sistemavendas.repository.orm;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
@@ -10,23 +11,23 @@ import com.fds.sistemavendas.repository.IRepProducts;
 import com.fds.sistemavendas.repository.jpa.IRepProductsJPA;
 
 @Repository
-@Primary
 public class RepProductsORM implements IRepProducts {
 
-    IRepProductsJPA jpa;
+    IRepProductsJPA productsRep;
 
-    public RepProductsORM(IRepProductsJPA jpa){
-        this.jpa = jpa;
+    @Autowired
+    public RepProductsORM(IRepProductsJPA productsRep){
+        this.productsRep = productsRep;
     }
 
     @Override
     public void save(Product p) {
-        jpa.save(p);
+        productsRep.save(p);
     }
 
     @Override
     public List<Product> getAll() {
-        return jpa.findAll();
+        return productsRep.findAll();
     }
     
     

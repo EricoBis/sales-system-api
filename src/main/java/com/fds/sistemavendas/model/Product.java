@@ -3,12 +3,14 @@ package com.fds.sistemavendas.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
-@Entity
+@Entity(name = "tb_product")
 public class Product {
 
     @Id
     private Long id;
+
     private String description;
+    
     private double price;
 
     public Product(Long id, String description, double price) {
@@ -16,6 +18,8 @@ public class Product {
         this.description = description;
         this.price = price;
     }
+
+    protected Product(){}
 
     public Long getId() {
         return id;

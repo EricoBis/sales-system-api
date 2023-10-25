@@ -2,17 +2,31 @@ package com.fds.sistemavendas.model;
 
 import java.util.List;
 
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Entity(name = "tb_budget")
 public class Budget {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private Long requestId;
+
+    @Column(name = "request_cost")
     private double requestCost;
+
+    @Column(name = "tax_cost")
     private double taxCost;
+
     private double discount;
+
+    @Column(name = "total_cost")
     private double totalCost;
+    
     private boolean done;
+
+    @OneToMany(cascade = CascadeType.ALL)
     private List<ItemRequest> items;
 
     public Budget(Long id, Long requestId, double requestCost, double taxCost, double discount, double totalCost,
@@ -26,6 +40,8 @@ public class Budget {
         this.done = false;
         this.items = items;
     }
+
+    protected Budget(){}
 
     public void setDone(boolean done) {
         this.done = done;

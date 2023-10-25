@@ -1,19 +1,28 @@
 package com.fds.sistemavendas.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity
+@Entity(name = "tb_storage_item")
 public class StorageItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "product_id")
     private Long productId;
+
+    @Column(name = "current_quantity")
     private int currQuantity;
+
+    @Column(name = "min_quantity")
     private int minQuantity;
+
+    @Column(name = "max_quantity")
     private int maxQuantity;
 
     public StorageItem(Long id, Long productId, int currQuantity, int minQuantity, int maxQuantity) {

@@ -6,7 +6,9 @@ import com.fds.sistemavendas.model.StorageItem;
 import com.fds.sistemavendas.repository.IRepItemStorage;
 import com.fds.sistemavendas.repository.jpa.IRepItemStorageJPA;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class RepItemStorageORM implements IRepItemStorage{
 
     IRepItemStorageJPA itemStorageRep;

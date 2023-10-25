@@ -10,13 +10,13 @@ public class StorageItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private long productId;
+    private Long id;
+    private Long productId;
     private int currQuantity;
     private int minQuantity;
     private int maxQuantity;
 
-    public StorageItem(long id, long productId, int currQuantity, int minQuantity, int maxQuantity) {
+    public StorageItem(Long id, Long productId, int currQuantity, int minQuantity, int maxQuantity) {
         this.id = id;
         this.productId = productId;
         this.currQuantity = currQuantity;
@@ -30,7 +30,7 @@ public class StorageItem {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

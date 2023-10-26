@@ -30,7 +30,7 @@ INSERT INTO tb_product (id, description, price) VALUES
 
 INSERT INTO tb_storage_item (id, product_id, current_quantity, min_quantity, max_quantity)
 VALUES
-    (1, 1, 100, 20, 200), -- A Culpa é das Estrelas (Livro 1)
+    (1, 1, 0, 20, 200), -- A Culpa é das Estrelas (Livro 1)
     (2, 2, 75, 15, 150),  -- O Senhor dos Anéis (Livro 2)
     (3, 3, 50, 10, 100),  -- 1984 (Livro 3)
     (4, 4, 60, 12, 120),  -- A Maldição do Tigre (Livro 4)

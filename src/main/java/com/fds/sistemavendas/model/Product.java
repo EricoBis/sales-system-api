@@ -13,10 +13,13 @@ public class Product {
     
     private double price;
 
-    public Product(Long id, String description, double price) {
+    private String image;
+
+    public Product(Long id, String description, double price, String image) {
         this.id = id;
         this.description = description;
         this.price = price;
+        this.image = image;
     }
 
     protected Product(){}
@@ -45,4 +48,7 @@ public class Product {
         this.price = price;
     }
 
+    public String getImage() {
+        return image;
+    }
 }

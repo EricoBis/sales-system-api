@@ -2,6 +2,7 @@ package com.fds.sistemavendas.model;
 
 import jakarta.persistence.*;
 
+// TODO - Provavelmente essa classe precisa de alguma alteração em relação ao Banco de Dados
 @Entity(name = "tb_item_request")
 public class ItemRequest {
 

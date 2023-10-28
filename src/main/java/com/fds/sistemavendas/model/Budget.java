@@ -11,6 +11,7 @@ public class Budget {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    // TODO - Verificar se requestId é realmente necessário aqui
     private Long requestId;
 
     @Column(name = "request_cost")

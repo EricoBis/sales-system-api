@@ -21,11 +21,6 @@ public class RepProductsORM implements IRepProducts {
     }
 
     @Override
-    public void save(Product p) {
-        productsRep.save(p);
-    }
-
-    @Override
     public List<Product> getAll() {
         return productsRep.findAll();
     }

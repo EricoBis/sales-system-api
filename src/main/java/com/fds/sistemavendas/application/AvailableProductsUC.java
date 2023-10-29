@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class AvailableProductsUC {
+public class  AvailableProductsUC {
 
     private final StorageService service;
 

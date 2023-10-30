@@ -11,11 +11,12 @@ public class Budget {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    // TODO - Verificar se requestId é realmente necessário aqui
-    private Long requestId;
+    private Long orderId;
 
-    @Column(name = "request_cost")
-    private double requestCost;
+    private String name;
+
+    @Column(name = "order_cost")
+    private double orderCost;
 
     @Column(name = "tax_cost")
     private double taxCost;
@@ -28,13 +29,13 @@ public class Budget {
     private boolean done;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<ItemRequest> items;
+    private List<OrderItem> items;
 
-    public Budget(Long id, Long requestId, double requestCost, double taxCost, double discount, double totalCost,
-            List<ItemRequest> items) {
-        this.id = id;
-        this.requestId = requestId;
-        this.requestCost = requestCost;
+    public Budget(Long orderId, String name, double orderCost, double taxCost, double discount, double totalCost,
+            List<OrderItem> items) {
+        this.orderId = orderId;
+        this.name = name;
+        this.orderCost = orderCost;
         this.taxCost = taxCost;
         this.discount = discount;
         this.totalCost = totalCost;
@@ -52,6 +53,26 @@ public class Budget {
         return id;
     }
 
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getOrderCost() {
+        return orderCost;
+    }
+
+    public double getTaxCost() {
+        return taxCost;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
     public double getTotalCost() {
         return totalCost;
     }
@@ -60,5 +81,7 @@ public class Budget {
         return done;
     }
 
-    
+    public List<OrderItem> getItems() {
+        return items;
+    }
 }

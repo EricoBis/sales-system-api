@@ -1,9 +1,9 @@
 package com.fds.sistemavendas.repository.orm;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import com.fds.sistemavendas.model.Product;
@@ -24,6 +24,11 @@ public class RepProductsORM implements IRepProducts {
     public List<Product> getAll() {
         return productsRep.findAll();
     }
-    
-    
+
+    @Override
+    public Optional<Product> getById(Long id) {
+        return productsRep.findById(id);
+    }
+
+
 }

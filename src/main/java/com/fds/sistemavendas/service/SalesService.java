@@ -11,5 +11,4 @@ public interface SalesService {
 
     Budget createOrUpdateBudget(Order order);
 
-    Budget saveBudget(Budget budget);
 }

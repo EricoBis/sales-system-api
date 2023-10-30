@@ -1,8 +1,8 @@
 package com.fds.sistemavendas.controller;
 
 import com.fds.sistemavendas.application.RequestBudget;
+import com.fds.sistemavendas.dto.BudgetDTO;
 import com.fds.sistemavendas.model.Order;
-import com.fds.sistemavendas.model.Budget;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +19,7 @@ public class BudgetController {
     }
 
     @PostMapping
-    public Budget requestBudget(@RequestBody Order order){
+    public BudgetDTO requestBudget(@RequestBody Order order){
         return requestBudget.createOrUpdateBudget(order);
     }
 }

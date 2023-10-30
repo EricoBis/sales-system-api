@@ -33,8 +33,6 @@ public class SalesServiceImpl implements SalesService {
     public Budget createOrUpdateBudget(Order order) {
         Budget newBudget; // = getBudgetByOrderId(order.getId());
 
-
-
         double orderCost = order.getItemList().stream().mapToDouble(item -> {
             int amount = item.getAmount();
             double price = getProductById(item.getProductId()).getPrice();
@@ -51,11 +49,6 @@ public class SalesServiceImpl implements SalesService {
         newBudget = new Budget(order.getId(), order.getName(), orderCost, taxCost, discount, totalCost, order.getItemList());
 
         return budgetRepository.save(newBudget);
-    }
-
-    @Override
-    public Budget saveBudget(Budget budget) {
-        return null;
     }
 
     private Budget getBudgetByOrderId(Long orderId) {

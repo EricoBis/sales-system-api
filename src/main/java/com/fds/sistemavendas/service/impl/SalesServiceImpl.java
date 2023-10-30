@@ -7,29 +7,28 @@ import com.fds.sistemavendas.model.Product;
 import com.fds.sistemavendas.repository.IRepBudget;
 import com.fds.sistemavendas.repository.IRepOrder;
 import com.fds.sistemavendas.repository.IRepProducts;
+import com.fds.sistemavendas.service.DiscountCalc;
 import com.fds.sistemavendas.service.SalesService;
+import com.fds.sistemavendas.service.TaxCalc;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-
 @Service
 public class SalesServiceImpl implements SalesService {
-
-    private static final double TAX = 0.10;
-    private static final int DISCOUNT_AMOUNT = 5;
-    private static final double DISCOUNT = 0.05;
-
     private final IRepBudget budgetRepository;
     private final IRepProducts productsRepository;
     private final IRepOrder orderRepository;
+    private final DiscountCalc discount;
+    private final TaxCalc tax;
 
     @Autowired
-    public SalesServiceImpl(IRepBudget budgetRepository, IRepProducts productsRepository, IRepOrder orderRepository) {
+    public SalesServiceImpl(IRepBudget budgetRepository, IRepProducts productsRepository, IRepOrder orderRepository, TaxCalc tax, DiscountCalc discount) {
         this.budgetRepository = budgetRepository;
         this.productsRepository = productsRepository;
         this.orderRepository = orderRepository;
+        this.discount = discount;
+        this.tax = tax;
     }
 
     @Override
@@ -47,13 +46,12 @@ public class SalesServiceImpl implements SalesService {
             return price * amount;
         }).sum();
 
-        double taxCost = orderCost * TAX;
-        double discount = order.getItemList().stream().mapToInt(OrderItem::getAmount).sum() > DISCOUNT_AMOUNT
-                ? orderCost * DISCOUNT
-                : 0.0;
-        double totalCost = orderCost - discount + taxCost;
+        double taxCost = tax.calculateTax(orderCost);
+        int quantity = order.getItemList().stream().mapToInt(OrderItem::getAmount).sum();
+        double d = discount.calculateDescount(quantity, orderCost);
+        double totalCost = orderCost - d + taxCost;
 
-        newBudget = new Budget(order.getId(), order.getName(), orderCost, taxCost, discount, totalCost, order.getItemList());
+        newBudget = new Budget(order.getId(), order.getName(), orderCost, taxCost, d, totalCost, order.getItemList());
 
         return budgetRepository.save(newBudget);
     }

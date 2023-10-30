@@ -1,8 +1,8 @@
 package com.fds.sistemavendas.application;
 
 import com.fds.sistemavendas.dto.BudgetDTO;
+import com.fds.sistemavendas.dto.OrderDTO;
 import com.fds.sistemavendas.model.Budget;
-import com.fds.sistemavendas.model.Order;
 import com.fds.sistemavendas.service.SalesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,9 +17,9 @@ public class RequestBudget {
         this.salesService = salesService;
     }
 
-    public BudgetDTO createOrUpdateBudget(Order order) {
+    public BudgetDTO createOrUpdateBudget(OrderDTO order) {
         Budget budget = salesService.createOrUpdateBudget(order);
-        return new BudgetDTO(budget.getOrderId(),
+        return new BudgetDTO(budget.getId(),
                              budget.getOrderCost(),
                              budget.getTaxCost(),
                              budget.getDiscount(),

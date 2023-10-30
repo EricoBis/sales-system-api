@@ -1,11 +1,11 @@
 package com.fds.sistemavendas.service.impl;
 
-import com.fds.sistemavendas.model.Order;
+import com.fds.sistemavendas.dto.OrderDTO;
 import com.fds.sistemavendas.model.Budget;
 import com.fds.sistemavendas.model.OrderItem;
 import com.fds.sistemavendas.model.Product;
 import com.fds.sistemavendas.repository.IRepBudget;
-import com.fds.sistemavendas.repository.IRepOrder;
+
 import com.fds.sistemavendas.repository.IRepProducts;
 import com.fds.sistemavendas.service.DiscountCalc;
 import com.fds.sistemavendas.service.SalesService;
@@ -18,26 +18,20 @@ import org.springframework.stereotype.Service;
 public class SalesServiceImpl implements SalesService {
     private final IRepBudget budgetRepository;
     private final IRepProducts productsRepository;
-    private final IRepOrder orderRepository;
-    private final DiscountCalc discount;
-    private final TaxCalc tax;
+    private DiscountCalc discountCalc;
+    private TaxCalc taxCalc;
 
     @Autowired
-    public SalesServiceImpl(IRepBudget budgetRepository, IRepProducts productsRepository, IRepOrder orderRepository, TaxCalc tax, DiscountCalc discount) {
+    public SalesServiceImpl(IRepBudget budgetRepository, IRepProducts productsRepository, TaxCalc taxCalc, DiscountCalc discountCalc) {
         this.budgetRepository = budgetRepository;
         this.productsRepository = productsRepository;
-        this.orderRepository = orderRepository;
-        this.discount = discount;
-        this.tax = tax;
+        this.discountCalc = discountCalc;
+        this.taxCalc = taxCalc;
     }
 
     @Override
-    public Budget createOrUpdateBudget(Order order) {
-        // if (order.getId() == null) {
-        //     orderRepository.save(order);
-        // }
-
-        Budget newBudget; // = getBudgetByOrderId(order.getId());
+    public Budget createOrUpdateBudget(OrderDTO order) {
+        Budget newBudget;
 
         double orderCost = order.getItemList().stream().mapToDouble(item -> {
             int amount = item.getAmount();
@@ -46,19 +40,21 @@ public class SalesServiceImpl implements SalesService {
             return price * amount;
         }).sum();
 
-        double taxCost = tax.calculateTax(orderCost);
-        int quantity = order.getItemList().stream().mapToInt(OrderItem::getAmount).sum();
-        double d = discount.calculateDescount(quantity, orderCost);
-        double totalCost = orderCost - d + taxCost;
+        double taxCost = taxCalc.calculateTax(orderCost);
 
-        newBudget = new Budget(order.getId(), order.getName(), orderCost, taxCost, d, totalCost, order.getItemList());
+        int quantity = order.getItemList().stream().mapToInt(OrderItem::getAmount).sum();
+        double discount = discountCalc.calculateDescount(quantity, orderCost);
+
+        double totalCost = orderCost - discount + taxCost;
+
+        newBudget = new Budget(order.getId(), order.getName(), orderCost, taxCost, discount, totalCost, order.getItemList());
 
         return budgetRepository.save(newBudget);
     }
 
-    private Budget getBudgetByOrderId(Long orderId) {
+    private Budget getBudgetByOId(Long id) {
         return budgetRepository.getAll().stream()
-                .filter(budget -> budget.getOrderId().equals(orderId))
+                .filter(budget -> budget.getId().equals(id))
                 .findAny()
                 .orElse(null);
     }

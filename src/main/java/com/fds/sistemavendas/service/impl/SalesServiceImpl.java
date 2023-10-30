@@ -5,6 +5,7 @@ import com.fds.sistemavendas.model.Budget;
 import com.fds.sistemavendas.model.OrderItem;
 import com.fds.sistemavendas.model.Product;
 import com.fds.sistemavendas.repository.IRepBudget;
+import com.fds.sistemavendas.repository.IRepOrder;
 import com.fds.sistemavendas.repository.IRepProducts;
 import com.fds.sistemavendas.service.SalesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +23,21 @@ public class SalesServiceImpl implements SalesService {
 
     private final IRepBudget budgetRepository;
     private final IRepProducts productsRepository;
+    private final IRepOrder orderRepository;
 
     @Autowired
-    public SalesServiceImpl(IRepBudget budgetRepository, IRepProducts productsRepository) {
+    public SalesServiceImpl(IRepBudget budgetRepository, IRepProducts productsRepository, IRepOrder orderRepository) {
         this.budgetRepository = budgetRepository;
         this.productsRepository = productsRepository;
+        this.orderRepository = orderRepository;
     }
 
     @Override
     public Budget createOrUpdateBudget(Order order) {
+        // if (order.getId() == null) {
+        //     orderRepository.save(order);
+        // }
+
         Budget newBudget; // = getBudgetByOrderId(order.getId());
 
         double orderCost = order.getItemList().stream().mapToDouble(item -> {

@@ -4,14 +4,14 @@ import com.fds.sistemavendas.model.Product;
 import com.fds.sistemavendas.model.StorageItem;
 import com.fds.sistemavendas.repository.IRepItemStorage;
 import com.fds.sistemavendas.repository.IRepProducts;
-import com.fds.sistemavendas.service.StorageService;
+import com.fds.sistemavendas.service.IStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class StorageServiceImpl implements StorageService {
+public class StorageServiceImpl implements IStorageService {
 
     private final IRepItemStorage itemsRep;
     private final IRepProducts productsRep;

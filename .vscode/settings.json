@@ -1,3 +1,17 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "sqltools.connections": [
+        {
+            "server": "localhost",
+            "port": 9042,
+            "previewLimit": 50,
+            "driver": "Cassandra",
+            "name": "cassandra",
+            "username": "admin",
+            "password": "123456"
+        }
+    ],
+    "vscode-pets.petColor": "white",
+    "vscode-pets.theme": "forest",
+    "vscode-pets.petSize": "small"
 }

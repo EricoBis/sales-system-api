@@ -3,17 +3,17 @@ package com.fds.sistemavendas.application;
 import com.fds.sistemavendas.dto.BudgetDTO;
 import com.fds.sistemavendas.dto.OrderDTO;
 import com.fds.sistemavendas.model.Budget;
-import com.fds.sistemavendas.service.SalesService;
+import com.fds.sistemavendas.service.ISalesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RequestBudget {
 
-    private final SalesService salesService;
+    private final ISalesService salesService;
 
     @Autowired
-    public RequestBudget(SalesService salesService) {
+    public RequestBudget(ISalesService salesService) {
         this.salesService = salesService;
     }
 
@@ -24,6 +24,7 @@ public class RequestBudget {
                              budget.getTaxCost(),
                              budget.getDiscount(),
                              budget.getTotalCost(),
+                             budget.isDone(),
                              budget.getItems());
     }
 }

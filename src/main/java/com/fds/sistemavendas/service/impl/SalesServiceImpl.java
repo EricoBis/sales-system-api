@@ -7,22 +7,22 @@ import com.fds.sistemavendas.model.Product;
 import com.fds.sistemavendas.repository.IRepBudget;
 
 import com.fds.sistemavendas.repository.IRepProducts;
-import com.fds.sistemavendas.service.DiscountCalc;
-import com.fds.sistemavendas.service.SalesService;
-import com.fds.sistemavendas.service.TaxCalc;
+import com.fds.sistemavendas.service.IDiscountCalc;
+import com.fds.sistemavendas.service.ISalesService;
+import com.fds.sistemavendas.service.ITaxCalc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SalesServiceImpl implements SalesService {
+public class SalesServiceImpl implements ISalesService {
     private final IRepBudget budgetRepository;
     private final IRepProducts productsRepository;
-    private DiscountCalc discountCalc;
-    private TaxCalc taxCalc;
+    private IDiscountCalc discountCalc;
+    private ITaxCalc taxCalc;
 
     @Autowired
-    public SalesServiceImpl(IRepBudget budgetRepository, IRepProducts productsRepository, TaxCalc taxCalc, DiscountCalc discountCalc) {
+    public SalesServiceImpl(IRepBudget budgetRepository, IRepProducts productsRepository, ITaxCalc taxCalc, IDiscountCalc discountCalc) {
         this.budgetRepository = budgetRepository;
         this.productsRepository = productsRepository;
         this.discountCalc = discountCalc;
@@ -52,7 +52,14 @@ public class SalesServiceImpl implements SalesService {
         return budgetRepository.save(newBudget);
     }
 
-    private Budget getBudgetByOId(Long id) {
+    @Override
+    public Budget executeOrder(Long id) {
+        Budget budgetToUpdate = getBudgetById(id);
+        budgetToUpdate.setDone(true); // :D
+        return budgetRepository.save(budgetToUpdate);
+    }
+
+    private Budget getBudgetById(Long id) {
         return budgetRepository.getAll().stream()
                 .filter(budget -> budget.getId().equals(id))
                 .findAny()

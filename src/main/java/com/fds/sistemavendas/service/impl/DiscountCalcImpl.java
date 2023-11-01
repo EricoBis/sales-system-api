@@ -2,10 +2,10 @@ package com.fds.sistemavendas.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.fds.sistemavendas.service.DiscountCalc;
+import com.fds.sistemavendas.service.IDiscountCalc;
 
 @Service
-public class DiscountCalcImpl implements DiscountCalc {
+public class DiscountCalcImpl implements IDiscountCalc {
     private static final double DISCOUNT = 0.05;
     private static final int DISCOUNT_AMOUNT = 5;
 

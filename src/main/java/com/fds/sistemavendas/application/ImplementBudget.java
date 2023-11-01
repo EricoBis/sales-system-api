@@ -1,26 +1,32 @@
 package com.fds.sistemavendas.application;
 
-import com.fasterxml.jackson.databind.cfg.ContextAttributes;
-import com.fds.sistemavendas.dto.OrderDTO;
+import com.fds.sistemavendas.dto.BudgetDTO;
 import com.fds.sistemavendas.model.Budget;
-import com.fds.sistemavendas.service.SalesService;
+import com.fds.sistemavendas.service.ISalesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ImplementBudget {
-    private final SalesService salesService;
+    private final ISalesService salesService;
 
     @Autowired
-    public ImplementBudget(SalesService salesService){
+    public ImplementBudget(ISalesService salesService){
         this.salesService = salesService;
     }
 
-    public Budget executeOrder(OrderDTO order){
-        if (order == null) {
+    public BudgetDTO executeOrder(Long id) {
+        if (id.equals(null)) {
             throw new IllegalArgumentException("Invalid order");
+        }else{
+            Budget budget = salesService.executeOrder(id);
+                return new BudgetDTO(budget.getId(),
+                                    budget.getOrderCost(),
+                                    budget.getTaxCost(),
+                                    budget.getDiscount(),
+                                    budget.getTotalCost(),
+                                    budget.isDone(),
+                                    budget.getItems());
         }
-        Budget budget = salesService.createOrUpdateBudget(order);
-        return budget;
     }
 }

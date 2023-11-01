@@ -1,35 +1,32 @@
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\service\impl\DiscountCalcImpl.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\dto\BudgetDTO.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\model\Order.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\controller\ProductController.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\repository\jpa\IRepOrderJPA.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\model\Report.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\service\impl\SalesServiceImpl.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\application\RequestBudget.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\service\TaxCalc.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\service\StorageService.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\SistemaVendasApplication.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\repository\IRepBudget.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\repository\IRepItemStorage.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\repository\jpa\IRepItemStorageJPA.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\repository\orm\RepBudgetORM.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\service\impl\TaxCalcImpl.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\repository\IRepProducts.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\repository\IRepOrder.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\controller\BudgetController.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\service\impl\StorageServiceImpl.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\model\StorageItem.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\repository\orm\RepItemStorageORM.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\application\ImplementBudget.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\repository\orm\RepProductsORM.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\model\Product.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\service\DiscountCalc.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\service\ReportService.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\service\impl\ReportServiceImpl.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\service\SalesService.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\model\OrderItem.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\repository\orm\RepOrderORM.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\application\AvailableProductsUC.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\model\Budget.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\repository\jpa\IRepProductsJPA.java
-C:\Users\pietr\OneDrive\Documentos\facul\QUARTO SEMESTRE\FUNDAMENTOS DE DESENVOLVIMENTO DE SOFTWARE\sistema-vendas\src\main\java\com\fds\sistemavendas\repository\jpa\IRepBudgetJPA.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/service/ReportService.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/repository/orm/RepBudgetORM.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/dto/OrderDTO.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/service/impl/ReportServiceImpl.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/repository/jpa/IRepItemStorageJPA.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/application/RequestBudget.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/dto/BudgetDTO.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/service/DiscountCalc.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/controller/BudgetController.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/repository/IRepBudget.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/repository/orm/RepItemStorageORM.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/repository/IRepProducts.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/service/SalesService.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/repository/orm/RepProductsORM.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/service/StorageService.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/application/ImplementBudget.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/service/impl/DiscountCalcImpl.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/model/Budget.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/controller/ProductController.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/service/TaxCalc.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/repository/jpa/IRepBudgetJPA.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/service/impl/SalesServiceImpl.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/repository/IRepItemStorage.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/model/OrderItem.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/SistemaVendasApplication.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/service/impl/TaxCalcImpl.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/application/AvailableProductsUC.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/model/StorageItem.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/service/impl/StorageServiceImpl.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/model/Report.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/model/Product.java
+/home/ericobis/Documentos/GithubProjects/FundamentosDesenvolvimentoDeSoftware/sistema-vendas/src/main/java/com/fds/sistemavendas/repository/jpa/IRepProductsJPA.java

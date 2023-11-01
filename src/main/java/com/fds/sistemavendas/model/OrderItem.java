@@ -2,12 +2,11 @@ package com.fds.sistemavendas.model;
 
 import jakarta.persistence.*;
 
-// TODO - Provavelmente essa classe precisa de alguma alteração em relação ao Banco de Dados
 @Entity(name = "tb_order_item")
 public class OrderItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private Long orderId;
 

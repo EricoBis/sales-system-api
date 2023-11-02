@@ -32,9 +32,11 @@ INSERT INTO tb_product (id, description, price, image) VALUES
                                                            (12, 'Os Sete Maridos de Evelyn Hugo', 14.99, 'https://m.media-amazon.com/images/I/91yEPgRcELL._AC_UF1000,1000_QL80_FMwebp_.jpg'),
                                                            (13, 'A Garota do Lago', 10.99, 'https://m.media-amazon.com/images/I/81LRk6+p1HL._AC_UF1000,1000_QL80_FMwebp_.jpg'),
                                                            (14, 'O Conto da Aia', 12.99, 'https://m.media-amazon.com/images/I/91AHNAr638L._AC_UF1000,1000_QL80_FMwebp_.jpg'),
-                                                           (15, 'O Código da Vinci', 13.99, ''),
-                                                           (16, 'Orgulho e Preconceito', 16.99, ''),
-                                                           (17, 'A Guerra dos Tronos', 22.99, '');
+                                                           (15, 'Relatos de um Gato Viajante', 13.99, 'https://m.media-amazon.com/images/I/81a9krs52mL._AC_UF1000,1000_QL80_.jpg'),
+                                                           (16, 'Pessoas Normais', 16.99, 'https://m.media-amazon.com/images/I/41jXtkfq49L.jpg'),
+                                                           (17, 'A Guerra dos Tronos', 22.99, 'https://m.media-amazon.com/images/I/91+1SUO3vUL._AC_UF1000,1000_QL80_.jpg'),
+                                                           (18, 'Alice no País das Maravilhas', 19.99, 'https://m.media-amazon.com/images/I/91hq-bopcvL._AC_UF1000,1000_QL80_.jpg'),
+                                                           (19, 'O Jardim das Borboletas', 26.99, 'https://m.media-amazon.com/images/I/A142ngVX2rL._AC_UF1000,1000_QL80_.jpg');
 
 
 
@@ -56,5 +58,7 @@ VALUES
     (14, 14, 70, 14, 140), -- O Conto da Aia (Livro 14)
     (15, 15, 80, 16, 160), -- O Código da Vinci (Livro 15)
     (16, 16, 90, 18, 180), -- Orgulho e Preconceito (Livro 16)
-    (17, 17, 100, 20, 200); -- A Guerra dos Tronos (Livro 17)
+    (17, 17, 100, 20, 200), -- A Guerra dos Tronos (Livro 17)
+    (18, 18, 70, 20, 200),
+    (19, 19, 70, 20, 200);
 

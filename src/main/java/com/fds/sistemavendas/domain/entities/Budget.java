@@ -1,5 +1,6 @@
 package com.fds.sistemavendas.domain.entities;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -13,6 +14,9 @@ public class Budget {
 
     private String name;
 
+    @Column(name = "id_client")
+    private Long clientId;
+
     @Column(name = "order_cost")
     private double orderCost;
 
@@ -25,6 +29,8 @@ public class Budget {
     private double totalCost;
     
     private boolean done;
+
+    private LocalDateTime date;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderItem> items;
@@ -73,6 +79,10 @@ public class Budget {
 
     public boolean isDone() {
         return done;
+    }
+
+    public Long getClientId() {
+        return clientId;
     }
 
     public List<OrderItem> getItems() {

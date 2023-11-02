@@ -4,6 +4,7 @@ import com.fds.sistemavendas.application.usecases.AvailableProductsUC;
 import com.fds.sistemavendas.domain.entities.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +24,9 @@ public class ProductController {
         this.useCase = useCase;
     }
     @GetMapping("")
-    public List<Product> getProducts(){
-        return useCase.getAvailableProducts();
+    public ResponseEntity<List<Product>> getProducts(){
+        var products = useCase.getAvailableProducts();
+        return ResponseEntity.ok(products);
     }
 
 }

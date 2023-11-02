@@ -23,6 +23,7 @@ public class ProductController {
     public ProductController(AvailableProductsUC useCase){
         this.useCase = useCase;
     }
+
     @GetMapping("")
     public ResponseEntity<List<Product>> getProducts(){
         var products = useCase.getAvailableProducts();

@@ -6,11 +6,12 @@ import com.fds.sistemavendas.application.usecases.ImplementBudget;
 import com.fds.sistemavendas.application.usecases.RequestBudget;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("budget")
+@RequestMapping("budgets")
 public class BudgetController {
 
     private final RequestBudget requestBudget;
@@ -22,13 +23,14 @@ public class BudgetController {
     }
 
     @PostMapping
-    public BudgetDTO requestBudget(@RequestBody OrderDTO order){
-        return requestBudget.createOrUpdateBudget(order);
+    public ResponseEntity<BudgetDTO> requestBudget(@RequestBody OrderDTO order){
+        var budgetCreated = requestBudget.createOrUpdateBudget(order);
+        return ResponseEntity.ok(budgetCreated);
     }
 
-    @PutMapping
-    ("/{id}")
-    public BudgetDTO implementBudget(@PathVariable (value="id") Long id){
-        return implementBudget.executeOrder(id);
+    @PutMapping ("/{id}")
+    public ResponseEntity<BudgetDTO> implementBudget(@PathVariable (value="id") Long id){
+        var budget = implementBudget.executeOrder(id);
+        return  ResponseEntity.ok(budget);
     }
 }

@@ -8,11 +8,13 @@ public class OrderDTO {
 
     private Long budgetId;
     private String name;
+    private Long clientId;
     private List<OrderItem> itemList;
 
-    public OrderDTO(Long budgetId, String name, List<OrderItem> itemList) {
+    public OrderDTO(Long budgetId, String name, Long clientId, List<OrderItem> itemList) {
         this.budgetId = budgetId;
         this.name = name;
+        this.clientId = clientId;
         this.itemList = itemList;
     }
     
@@ -22,6 +24,10 @@ public class OrderDTO {
 
     public String getName() {
         return name;
+    }
+
+    public Long getClientId() {
+        return clientId;
     }
 
     public List<OrderItem> getItemList() {

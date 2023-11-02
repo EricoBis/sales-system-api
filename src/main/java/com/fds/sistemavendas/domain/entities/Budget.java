@@ -35,10 +35,11 @@ public class Budget {
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderItem> items;
 
-    public Budget(Long id, String name, double orderCost, double taxCost, double discount, double totalCost,
+    public Budget(Long id, String name, Long clientId, double orderCost, double taxCost, double discount, double totalCost,
             List<OrderItem> items) {
         this.id = id;
         this.name = name;
+        this.clientId = clientId;
         this.orderCost = orderCost;
         this.taxCost = taxCost;
         this.discount = discount;
@@ -88,4 +89,9 @@ public class Budget {
     public List<OrderItem> getItems() {
         return items;
     }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.fds.sistemavendas.application.dto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.fds.sistemavendas.domain.entities.OrderItem;
@@ -13,6 +14,7 @@ public class BudgetDTO {
     private final double totalCost;
     private final boolean done;
     private final Long clientId;
+    private final LocalDateTime date;
     private final List<OrderItem> items;
 
     public BudgetDTO(Long orderId, double orderCost, double taxCost, double discount, double totalCost, boolean done, Long clientId, List<OrderItem> items) {
@@ -24,6 +26,7 @@ public class BudgetDTO {
         this.done = done;
         this.items = items;
         this.clientId = clientId;
+        this.date = LocalDateTime.now();
     }
 
     public Long getOrderId() {

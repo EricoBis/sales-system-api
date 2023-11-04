@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StorageServiceImpl implements IStorageService {
@@ -29,5 +30,10 @@ public class StorageServiceImpl implements IStorageService {
                 .map(StorageItem::getProductId)
                 .toList();
         return productsRep.getAll().stream().filter(product -> productIds.contains(product.getId())).toList();
+    }
+
+    @Override
+    public Optional<Product> findProduct(Long id) {
+        return productsRep.getById(id);
     }
 }

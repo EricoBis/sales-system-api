@@ -3,16 +3,19 @@ package com.fds.sistemavendas.domain.services.impl;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import com.fds.sistemavendas.application.dto.OrderDTO;
 import com.fds.sistemavendas.domain.entities.Budget;
-import com.fds.sistemavendas.domain.services.IDiscount2023;
+import com.fds.sistemavendas.domain.services.IDiscountCalc;
 
 @Service
-public class Discount2023Impl implements IDiscount2023 {
+@Primary
+public class Discount2023Impl implements IDiscountCalc {
     
     @Override
-    public double calculateDiscount(double orderCost, List<Budget> clientsBudgets) {
+    public double calculateDiscount(List<Budget> clientsBudgets, OrderDTO order, double orderCost) {
         // valor médio de suas últimas 3 compras superior a R$ 10 mil recebem 10% de desconto
         // a cada R$ 10 mil adicionais 5% adicionais até um limite de 30% de desconto
         double discount = 0;

@@ -1,5 +1,7 @@
 package com.fds.sistemavendas.domain.services;
 
+import java.util.Map;
+
 public interface IReportService {
-    // TODO
+    Map<String, Object> generateStatistics();
 }

@@ -14,4 +14,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleNotFoundException(NoSuchElementException notFoundException) {
         return new ResponseEntity<>(notFoundException.getMessage(), HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(Throwable.class)
+    public ResponseEntity<String> handleUnexpectedException(Throwable unexpectedException) {
+        return new ResponseEntity<>("Unexpected server error", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

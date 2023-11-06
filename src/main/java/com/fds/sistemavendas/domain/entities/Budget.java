@@ -30,6 +30,7 @@ public class Budget {
     
     private boolean done;
 
+    @Column(name = "date_time")
     private LocalDateTime date;
 
     @OneToMany(cascade = CascadeType.ALL)

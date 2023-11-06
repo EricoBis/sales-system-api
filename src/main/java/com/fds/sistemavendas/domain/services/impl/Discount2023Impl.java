@@ -18,39 +18,39 @@ public class Discount2023Impl implements IDiscount2023 {
         double discount = 0;
         double avg = 0;
 
-        // List<Budget> lastThreeBudgets = new ArrayList<Budget>();
-        if(clientsBudgets.size() >= 3) {
-            for(int i = clientsBudgets.size() - 1; i > clientsBudgets.size() - 4; i--) {
-                avg += clientsBudgets.get(i).getTotalCost();
-                // lastThreeBudgets.add(clientsBudgets.get(i));
-            }
-        }
-        else {
-            for(int i = 0; i < clientsBudgets.size(); i++) {
-                avg += clientsBudgets.get(i).getTotalCost();
-                // lastThreeBudgets.add(clientsBudgets.get(i));
-            }
+        //precisa ter feito mais de 3 compras?
+        if (clientsBudgets.size() < 3) {
+            return 0;
         }
 
-        // for(int i = 0; i < lastThreeBudgets.size(); i++) {
-        //     avg += lastThreeBudgets.get(i).getTotalCost();
+        // if(clientsBudgets.size() >= 3) {
+            for(int i = 0; i < clientsBudgets.size(); i++) {
+                avg += clientsBudgets.get(i).getTotalCost();
+            }
+        // }
+        // else {
+            
         // }
 
         avg = avg / clientsBudgets.size();
 
-        if(avg > 10000) {
+        if (avg >= 50000) discount = 30;
+        else if(avg > 10000) {
             discount = 10;
             avg -= 10000;
 
-            if((avg / 10000) <= 5) {
-                discount += Math.floor((avg / 10000) * 5);
-            }
-            else {
-                discount = 30;
+            double iMax = avg / 10000;
+
+            for(int i = 0; i < iMax; i++) {
+                if(avg <= 0) break;
+                if((avg / 10000) <= 4) {
+                    discount += Math.floor((avg / 10000) * 5);
+                    avg -= 10000;
+                }
             }
         }
 
-        // Clientes com mais de 10 compras nos últimos 6 meses recebem desconto de 25%, indiferente do valor
+        //Clientes com mais de 10 compras nos últimos 6 meses recebem desconto de 25%, indiferente do valor
         if(discount < 25) {
             List<Budget> lastSixMonths = clientsBudgets.stream()
                                                     .filter(budget -> budget.getDate().isAfter(LocalDateTime.now().minusMonths(6)))
@@ -59,7 +59,7 @@ public class Discount2023Impl implements IDiscount2023 {
             if(lastSixMonths.size() > 10) discount = 25;
         }
 
-        return orderCost * discount;
+        return orderCost * (discount/100);
     }
     
 }

@@ -49,7 +49,7 @@ public class SalesServiceImpl implements ISalesService {
 
         List<Budget> clientsBudgets = getBudgetsByClientId(order.getClientId());
 
-        int quantity = order.getItemList().stream().mapToInt(OrderItem::getAmount).sum();
+        // int quantity = order.getItemList().stream().mapToInt(OrderItem::getAmount).sum();
         // double discount = discountCalc.calculateDescount(quantity, orderCost);
         double discount = discount2023.calculateDiscount(orderCost, clientsBudgets);
 

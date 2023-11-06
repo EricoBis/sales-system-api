@@ -1,5 +1,6 @@
 package com.fds.sistemavendas.domain.entities;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -12,6 +13,9 @@ public class Budget {
     private Long id;
 
     private String name;
+
+    @Column(name = "id_client")
+    private Long clientId;
 
     @Column(name = "order_cost")
     private double orderCost;
@@ -26,13 +30,17 @@ public class Budget {
     
     private boolean done;
 
+    @Column(name = "date_time")
+    private LocalDateTime date;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderItem> items;
 
-    public Budget(Long id, String name, double orderCost, double taxCost, double discount, double totalCost,
+    public Budget(Long id, String name, Long clientId, double orderCost, double taxCost, double discount, double totalCost,
             List<OrderItem> items) {
         this.id = id;
         this.name = name;
+        this.clientId = clientId;
         this.orderCost = orderCost;
         this.taxCost = taxCost;
         this.discount = discount;
@@ -75,7 +83,16 @@ public class Budget {
         return done;
     }
 
+    public Long getClientId() {
+        return clientId;
+    }
+
     public List<OrderItem> getItems() {
         return items;
     }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
 }

@@ -27,6 +27,7 @@ public class ImplementBudget {
                                     budget.getDiscount(),
                                     budget.getTotalCost(),
                                     budget.isDone(),
+                                    budget.getClientId(),
                                     budget.getItems());
         }
     }

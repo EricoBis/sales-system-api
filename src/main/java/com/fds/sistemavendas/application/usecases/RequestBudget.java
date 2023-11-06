@@ -26,6 +26,7 @@ public class RequestBudget {
                              budget.getDiscount(),
                              budget.getTotalCost(),
                              budget.isDone(),
+                             budget.getClientId(),
                              budget.getItems());
     }
 }

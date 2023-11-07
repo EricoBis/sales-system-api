@@ -35,7 +35,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(toH2Console()).permitAll()
                         .requestMatchers(mvcRequestMatcher.pattern("/auth/**")).permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll() //change to .authenticated()
                 );
 
         http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));

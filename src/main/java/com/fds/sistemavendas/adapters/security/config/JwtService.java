@@ -1,4 +1,4 @@
-package com.fds.sistemavendas.adapters.authentication.config;
+package com.fds.sistemavendas.adapters.security.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

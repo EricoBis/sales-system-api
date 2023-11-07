@@ -1,7 +1,7 @@
-package com.fds.sistemavendas.adapters.authentication.auth;
+package com.fds.sistemavendas.adapters.security.auth;
 
-import com.fds.sistemavendas.adapters.authentication.user.Role;
-import com.fds.sistemavendas.adapters.authentication.config.JwtService;
+import com.fds.sistemavendas.adapters.security.user.Role;
+import com.fds.sistemavendas.adapters.security.config.JwtService;
 import com.fds.sistemavendas.adapters.repositories.IRepClients;
 import com.fds.sistemavendas.domain.entities.Client;
 import lombok.RequiredArgsConstructor;

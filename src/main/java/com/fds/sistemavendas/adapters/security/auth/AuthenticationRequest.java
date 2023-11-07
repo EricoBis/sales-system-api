@@ -1,4 +1,4 @@
-package com.fds.sistemavendas.adapters.authentication.auth;
+package com.fds.sistemavendas.adapters.security.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

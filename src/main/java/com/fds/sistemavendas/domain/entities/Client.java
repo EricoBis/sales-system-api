@@ -1,12 +1,13 @@
 package com.fds.sistemavendas.domain.entities;
 
 import jakarta.validation.constraints.Email;
-import org.hibernate.validator.constraints.br.CPF;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.userdetails.UserDetails;
+
 
 @Entity(name = "tb_client")
-public class Client {
+public class Client{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,15 +21,11 @@ public class Client {
 
     private String password;
 
-    @CPF
-    private int cpf;
-
     public Client(Long id, String name, String email, String password, int cpf) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
-        this.cpf = cpf;
     }
 
     public Client(){}
@@ -39,10 +36,6 @@ public class Client {
 
     public String getName() {
         return this.name;
-    }
-
-    public int getCpf() {
-        return this.cpf;
     }
 
     public String getEmail() {

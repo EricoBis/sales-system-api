@@ -4,7 +4,6 @@ import com.fds.sistemavendas.adapters.repositories.IRepBudget;
 import com.fds.sistemavendas.adapters.repositories.IRepProducts;
 import com.fds.sistemavendas.application.dto.OrderDTO;
 import com.fds.sistemavendas.domain.entities.Budget;
-import com.fds.sistemavendas.domain.entities.OrderItem;
 import com.fds.sistemavendas.domain.entities.Product;
 import com.fds.sistemavendas.domain.services.IDiscountCalc;
 import com.fds.sistemavendas.domain.services.ISalesService;
@@ -63,16 +62,12 @@ public class SalesServiceImpl implements ISalesService {
     }
 
     private Budget getBudgetById(Long id) {
-        return budgetRepository.getAll().stream()
-                .filter(budget -> budget.getId().equals(id))
-                .findAny()
-                .orElse(null);
+        return budgetRepository.getById(id).get();
     }
 
     private List<Budget> getBudgetsByClientId(Long clientId) {
-        return budgetRepository.getAll().stream()
+        return budgetRepository.getByClientId(clientId).stream()
                 .filter(budget -> budget.isDone() == true)
-                .filter(budget -> budget.getClientId().equals(clientId))
                 .collect(Collectors.toList());
     }
 

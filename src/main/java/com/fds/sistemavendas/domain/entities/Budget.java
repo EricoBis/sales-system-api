@@ -94,5 +94,4 @@ public class Budget {
     public LocalDateTime getDate() {
         return date;
     }
-
 }

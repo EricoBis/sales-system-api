@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class RepBudgetORM implements IRepBudget{
@@ -29,4 +30,13 @@ public class RepBudgetORM implements IRepBudget{
         return budgetRep.save(budget);
     }
 
+    @Override
+    public List<Budget> getByClientId(Long clientId) {
+        return budgetRep.findByClientId(clientId);
+    }
+
+    @Override
+    public Optional<Budget> getById(Long id) {
+        return budgetRep.findById(id);
+    }
 }

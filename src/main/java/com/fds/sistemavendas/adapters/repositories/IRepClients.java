@@ -7,4 +7,6 @@ import com.fds.sistemavendas.domain.entities.Client;
 
 public interface IRepClients {
     Optional<Client> findById(Long id);
+
+    Optional<Client> findByEmail(String email);
 }

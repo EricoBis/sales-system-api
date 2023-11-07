@@ -11,4 +11,6 @@ public interface IRepClientsJPA extends CrudRepository<Client, Long> {
 
     @Override
     Optional<Client> findById(Long id);
+
+    Optional<Client> findByEmail(String email);
 }

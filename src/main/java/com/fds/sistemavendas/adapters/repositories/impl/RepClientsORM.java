@@ -24,4 +24,9 @@ public class RepClientsORM implements IRepClients {
     public Optional<Client> findById(Long id) {
         return clientsRep.findById(id);
     }
+
+    @Override
+    public Optional<Client> findByEmail(String email) {
+        return clientsRep.findByEmail(email);
+    }
 }

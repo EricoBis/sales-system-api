@@ -21,6 +21,11 @@ public class RepClientsORM implements IRepClients {
     }
 
     @Override
+    public Client save(Client c) {
+        return clientsRep.save(c);
+    }
+
+    @Override
     public Optional<Client> findById(Long id) {
         return clientsRep.findById(id);
     }

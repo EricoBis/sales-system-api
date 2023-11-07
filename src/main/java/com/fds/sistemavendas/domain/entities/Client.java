@@ -1,6 +1,6 @@
 package com.fds.sistemavendas.domain.entities;
 
-import com.fds.sistemavendas.adapters.authentication.Role;
+import com.fds.sistemavendas.adapters.security.user.Role;
 import jakarta.validation.constraints.Email;
 
 import jakarta.persistence.*;

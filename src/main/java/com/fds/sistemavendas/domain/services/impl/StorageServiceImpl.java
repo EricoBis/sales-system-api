@@ -1,6 +1,7 @@
 package com.fds.sistemavendas.domain.services.impl;
 
 import com.fds.sistemavendas.adapters.repositories.IRepItemStorage;
+import com.fds.sistemavendas.adapters.repositories.IRepShed;
 import com.fds.sistemavendas.adapters.repositories.IRepProducts;
 import com.fds.sistemavendas.domain.entities.Product;
 import com.fds.sistemavendas.domain.entities.StorageItem;
@@ -15,13 +16,15 @@ import java.util.Optional;
 @Service
 public class StorageServiceImpl implements IStorageService {
 
+    private final IRepShed shedsRep;
     private final IRepItemStorage itemsRep;
     private final IRepProducts productsRep;
 
     @Autowired
-    public StorageServiceImpl(IRepItemStorage itemsRep, IRepProducts productsRep){
+    public StorageServiceImpl(IRepItemStorage itemsRep, IRepProducts productsRep, IRepShed shedsRep){
         this.itemsRep = itemsRep;
         this.productsRep = productsRep;
+        this.shedsRep = shedsRep;
     }
 
     public List<Product> getAvailableProducts(){
@@ -30,6 +33,10 @@ public class StorageServiceImpl implements IStorageService {
                 .map(StorageItem::getProductId)
                 .toList();
         return productsRep.getAll().stream().filter(product -> productIds.contains(product.getId())).toList();
+    }
+
+    public List<Product> getAvailableProductsShed(){
+        return null;       
     }
 
     @Override

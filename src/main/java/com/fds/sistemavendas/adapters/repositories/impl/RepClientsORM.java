@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.fds.sistemavendas.adapters.repositories.IRepClients;
 import com.fds.sistemavendas.adapters.repositories.jpa.IRepClientsJPA;
 import com.fds.sistemavendas.domain.entities.Client;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class RepClientsORM implements IRepClients {
 
     IRepClientsJPA clientsRep;
@@ -19,12 +21,7 @@ public class RepClientsORM implements IRepClients {
     }
 
     @Override
-    public List<Client> getAll() {
-        return clientsRep.findAll();
-    }
-
-    @Override
-    public Optional<Client> getClientById(Long id) {
+    public Optional<Client> findById(Long id) {
         return clientsRep.findById(id);
     }
 }

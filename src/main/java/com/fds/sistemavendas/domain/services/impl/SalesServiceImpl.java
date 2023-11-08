@@ -58,6 +58,9 @@ public class SalesServiceImpl implements ISalesService {
     @Override
     public Budget executeOrder(Long id) {
         Budget budgetToUpdate = getBudgetById(id);
+        // validar se tem todos os produtos em estoque - se não, lançar exceção
+        
+
         budgetToUpdate.setDone(true); // :D
         return budgetRepository.save(budgetToUpdate);
     }

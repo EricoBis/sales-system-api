@@ -1,5 +1,6 @@
 package com.fds.sistemavendas.domain.services.impl;
 
+import com.fds.sistemavendas.adapters.controller.exception.BusinessException;
 import com.fds.sistemavendas.adapters.repositories.IRepBudget;
 import com.fds.sistemavendas.adapters.repositories.IRepProducts;
 import com.fds.sistemavendas.application.dto.OrderDTO;
@@ -7,6 +8,7 @@ import com.fds.sistemavendas.domain.entities.Budget;
 import com.fds.sistemavendas.domain.entities.Product;
 import com.fds.sistemavendas.domain.services.IDiscountCalc;
 import com.fds.sistemavendas.domain.services.ISalesService;
+import com.fds.sistemavendas.domain.services.IStorageService;
 import com.fds.sistemavendas.domain.services.ITaxCalc;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +23,15 @@ public class SalesServiceImpl implements ISalesService {
     private final IRepProducts productsRepository;
     private IDiscountCalc discountCalc;
     private ITaxCalc taxCalc;
+    private IStorageService storageService;
 
     @Autowired
-    public SalesServiceImpl(IRepBudget budgetRepository, IRepProducts productsRepository, ITaxCalc taxCalc, IDiscountCalc discountCalc) {
+    public SalesServiceImpl(IRepBudget budgetRepository, IRepProducts productsRepository, ITaxCalc taxCalc, IDiscountCalc discountCalc, IStorageService storageService) {
         this.budgetRepository = budgetRepository;
         this.productsRepository = productsRepository;
         this.discountCalc = discountCalc;
         this.taxCalc = taxCalc;
+        this.storageService = storageService;
     }
 
     @Override
@@ -57,8 +61,11 @@ public class SalesServiceImpl implements ISalesService {
     @Override
     public Budget executeOrder(Long id) {
         Budget budgetToUpdate = getBudgetById(id);
-        budgetToUpdate.setDone(true); // :D
-        return budgetRepository.save(budgetToUpdate);
+        if (storageService.ProductsAreAvailable(budgetToUpdate.getItems())) {
+            budgetToUpdate.setDone(true); // :D
+            return budgetRepository.save(budgetToUpdate);
+        }
+        throw new BusinessException("Items not available.");
     }
 
     private Budget getBudgetById(Long id) {

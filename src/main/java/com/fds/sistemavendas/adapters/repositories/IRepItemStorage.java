@@ -7,4 +7,5 @@ import com.fds.sistemavendas.domain.entities.StorageItem;
 public interface IRepItemStorage {
     void save(StorageItem item);
     List<StorageItem> getAll();
+    StorageItem findByProductId(Long id);
 }

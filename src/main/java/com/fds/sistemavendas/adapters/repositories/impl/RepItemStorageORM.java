@@ -28,5 +28,10 @@ public class RepItemStorageORM implements IRepItemStorage{
     public List<StorageItem> getAll() {
         return itemStorageRep.findAll();
     }
+
+    @Override
+    public StorageItem findByProductId(Long id) {
+        return itemStorageRep.findByProductId(id);
+    }
     
 }

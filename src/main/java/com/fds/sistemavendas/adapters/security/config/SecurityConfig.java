@@ -28,7 +28,6 @@ public class SecurityConfig {
 
         MvcRequestMatcher.Builder mvcRequestMatcher = new MvcRequestMatcher.Builder(introspector);
 
-
         http.csrf(csrf -> csrf
                         .ignoringRequestMatchers(toH2Console()).disable())
 

@@ -4,6 +4,7 @@ import com.fds.sistemavendas.adapters.repositories.IRepItemStorage;
 import com.fds.sistemavendas.adapters.repositories.IRepShed;
 import com.fds.sistemavendas.adapters.repositories.IRepProducts;
 import com.fds.sistemavendas.domain.entities.Product;
+import com.fds.sistemavendas.domain.entities.Shed;
 import com.fds.sistemavendas.domain.entities.StorageItem;
 import com.fds.sistemavendas.domain.services.IStorageService;
 
@@ -28,15 +29,19 @@ public class StorageServiceImpl implements IStorageService {
     }
 
     public List<Product> getAvailableProducts(){
+        // percorrer todos os sheds e retornar todos os produtos disponiveis
+
+        List<Shed> sheds = shedsRep.getAll();
+
+        for (Shed s : sheds) {
+            
+        }
+
         List<Long> productIds = itemsRep.getAll().stream()
                 .filter(product -> product.getCurrQuantity() > 0)
                 .map(StorageItem::getProductId)
                 .toList();
         return productsRep.getAll().stream().filter(product -> productIds.contains(product.getId())).toList();
-    }
-
-    public List<Product> getAvailableProductsShed(){
-        return null;       
     }
 
     @Override

@@ -10,4 +10,5 @@ public interface IRepItemStorageJPA extends CrudRepository<StorageItem, Long> {
 
     @Override
     List<StorageItem> findAll();
+    StorageItem findByProductId(Long id);
 }

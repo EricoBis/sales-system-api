@@ -31,7 +31,7 @@ public class Budget {
     @Column(name = "date_time")
     private LocalDateTime date;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<OrderItem> items;
 
     public Budget(Long id, Long clientId, double orderCost, double taxCost, double discount, double totalCost,

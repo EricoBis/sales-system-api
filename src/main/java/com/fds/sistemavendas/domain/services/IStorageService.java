@@ -13,4 +13,6 @@ public interface IStorageService {
     Optional<Product> findProduct(Long id);
 
     public boolean ProductsAreAvailable(List<OrderItem> items);
+
+    public void UpdateStorage(List<OrderItem> items);
 }

@@ -34,7 +34,7 @@ public class Budget {
     @Column(name = "expiration_date")
     private LocalDateTime expirationDate;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<OrderItem> items;
 
     public Budget(Long id, Long clientId, double orderCost, double taxCost, double discount, double totalCost, 

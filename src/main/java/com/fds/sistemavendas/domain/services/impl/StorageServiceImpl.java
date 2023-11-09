@@ -45,4 +45,11 @@ public class StorageServiceImpl implements IStorageService {
             else return true;
         });
     }
+
+    public void UpdateStorage(List<OrderItem> items) {
+        for (OrderItem orderItem : items) {
+            StorageItem stItem = itemsRep.findByProductId(orderItem.getProductId());
+            stItem.setCurrQuantity(stItem.getCurrQuantity() - orderItem.getAmount());
+        }
+    }
 }

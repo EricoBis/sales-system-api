@@ -76,6 +76,7 @@ public class SalesServiceImpl implements ISalesService {
     public Budget executeOrder(Long id) {
         Budget budgetToUpdate = getBudgetById(id);
         if (storageService.ProductsAreAvailable(budgetToUpdate.getItems())) {
+            storageService.UpdateStorage(budgetToUpdate.getItems());
             budgetToUpdate.setDone(true); // :D
             return budgetRepository.save(budgetToUpdate);
         }

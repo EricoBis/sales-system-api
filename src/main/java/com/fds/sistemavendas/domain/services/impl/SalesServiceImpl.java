@@ -1,6 +1,6 @@
 package com.fds.sistemavendas.domain.services.impl;
 
-import com.fds.sistemavendas.adapters.controller.exception.BusinessException;
+import com.fds.sistemavendas.adapters.controller.exception.SaleNotDoneException;
 import com.fds.sistemavendas.adapters.repositories.IRepBudget;
 import com.fds.sistemavendas.adapters.repositories.IRepProducts;
 import com.fds.sistemavendas.application.dto.OrderDTO;
@@ -80,7 +80,7 @@ public class SalesServiceImpl implements ISalesService {
             budgetToUpdate.setDone(true); // :D
             return budgetRepository.save(budgetToUpdate);
         }
-        throw new BusinessException("Items not available.");
+        throw new SaleNotDoneException("Items not available.");
     }
 
     private Budget getBudgetById(Long id) {

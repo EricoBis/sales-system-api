@@ -19,4 +19,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleUnexpectedException(Throwable unexpectedException) {
         return new ResponseEntity<>("Unexpected server error", HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(SaleNotDoneException.class)
+    public ResponseEntity<String> saleNotDoneException(SaleNotDoneException saleNotDoneException) {
+        return new ResponseEntity<>(saleNotDoneException.getMessage(), HttpStatus.BAD_REQUEST);
+    }
 }

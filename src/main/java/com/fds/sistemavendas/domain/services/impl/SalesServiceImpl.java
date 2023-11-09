@@ -75,7 +75,7 @@ public class SalesServiceImpl implements ISalesService {
     @Override
     public Budget executeOrder(Long id) {
         Budget budgetToUpdate = getBudgetById(id);
-        if (storageService.ProductsAreAvailable(budgetToUpdate.getItems())) {
+        if (storageService.ProductsAreAvailable(budgetToUpdate.getItems()) && budgetToUpdate.getExpirationDate().isBefore(LocalDateTime.now())) {
             storageService.UpdateStorage(budgetToUpdate.getItems());
             budgetToUpdate.setDone(true); // :D
             return budgetRepository.save(budgetToUpdate);

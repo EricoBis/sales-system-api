@@ -13,6 +13,9 @@ import com.fds.sistemavendas.domain.services.ITaxCalc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -53,7 +56,18 @@ public class SalesServiceImpl implements ISalesService {
 
         double totalCost = orderCost - discount + taxCost;
 
-        newBudget = new Budget(order.getId(), order.getClientId(), orderCost, taxCost, discount, totalCost, order.getItemList());
+        LocalDateTime now = LocalDateTime.now();
+
+        LocalDateTime expirationDate;
+
+        if(now.getMonth().equals(Month.JANUARY) || now.getMonth().equals(Month.FEBRUARY)) {
+            expirationDate = now.plusDays(35);
+        }
+        else {
+            expirationDate = now.plusDays(21);
+        }
+
+        newBudget = new Budget(order.getId(), order.getClientId(), orderCost, taxCost, discount, totalCost, expirationDate, order.getItemList(), now);
 
         return budgetRepository.save(newBudget);
     }

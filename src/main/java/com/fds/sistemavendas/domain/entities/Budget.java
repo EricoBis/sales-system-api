@@ -31,11 +31,14 @@ public class Budget {
     @Column(name = "date_time")
     private LocalDateTime date;
 
+    @Column(name = "expiration_date")
+    private LocalDateTime expirationDate;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderItem> items;
 
-    public Budget(Long id, Long clientId, double orderCost, double taxCost, double discount, double totalCost,
-            List<OrderItem> items) {
+    public Budget(Long id, Long clientId, double orderCost, double taxCost, double discount, double totalCost, 
+            LocalDateTime expirationDate, List<OrderItem> items, LocalDateTime date) {
         this.id = id;
         this.clientId = clientId;
         this.orderCost = orderCost;
@@ -43,7 +46,9 @@ public class Budget {
         this.discount = discount;
         this.totalCost = totalCost;
         this.done = false;
+        this.expirationDate = expirationDate;
         this.items = items;
+        this.date = date;
     }
 
     protected Budget(){}
@@ -86,5 +91,9 @@ public class Budget {
 
     public LocalDateTime getDate() {
         return date;
+    }
+
+    public LocalDateTime getExpirationDate() {
+        return expirationDate;
     }
 }

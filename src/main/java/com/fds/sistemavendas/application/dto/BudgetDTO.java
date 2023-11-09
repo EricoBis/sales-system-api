@@ -15,9 +15,10 @@ public class BudgetDTO {
     private final boolean done;
     private final Long clientId;
     private final LocalDateTime date;
+    private final LocalDateTime expirationDate;
     private final List<OrderItem> items;
 
-    public BudgetDTO(Long orderId, double orderCost, double taxCost, double discount, double totalCost, boolean done, Long clientId, List<OrderItem> items) {
+    public BudgetDTO(Long orderId, double orderCost, double taxCost, double discount, double totalCost, boolean done, Long clientId, List<OrderItem> items, LocalDateTime date, LocalDateTime expirationDate) {
         this.orderId = orderId;
         this.orderCost = orderCost;
         this.taxCost = taxCost;
@@ -26,7 +27,8 @@ public class BudgetDTO {
         this.done = done;
         this.items = items;
         this.clientId = clientId;
-        this.date = LocalDateTime.now();
+        this.date = date;
+        this.expirationDate = expirationDate;
     }
 
     public Long getOrderId() {
@@ -59,5 +61,13 @@ public class BudgetDTO {
 
     public Long getClientId() {
         return clientId;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public LocalDateTime getExpirationDate() {
+        return expirationDate;
     }
 }

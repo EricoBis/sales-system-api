@@ -27,6 +27,8 @@ public class RequestBudget {
                              budget.getTotalCost(),
                              budget.isDone(),
                              budget.getClientId(),
-                             budget.getItems());
+                             budget.getItems(),
+                             budget.getDate(),
+                             budget.getExpirationDate());
     }
 }

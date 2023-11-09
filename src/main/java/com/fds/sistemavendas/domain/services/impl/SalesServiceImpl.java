@@ -53,7 +53,7 @@ public class SalesServiceImpl implements ISalesService {
 
         double totalCost = orderCost - discount + taxCost;
 
-        newBudget = new Budget(order.getId(), order.getName(), order.getClientId(), orderCost, taxCost, discount, totalCost, order.getItemList());
+        newBudget = new Budget(order.getId(), order.getClientId(), orderCost, taxCost, discount, totalCost, order.getItemList());
 
         return budgetRepository.save(newBudget);
     }

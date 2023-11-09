@@ -12,8 +12,6 @@ public class Budget {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
-
     @Column(name = "id_client")
     private Long clientId;
 
@@ -36,10 +34,9 @@ public class Budget {
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderItem> items;
 
-    public Budget(Long id, String name, Long clientId, double orderCost, double taxCost, double discount, double totalCost,
+    public Budget(Long id, Long clientId, double orderCost, double taxCost, double discount, double totalCost,
             List<OrderItem> items) {
         this.id = id;
-        this.name = name;
         this.clientId = clientId;
         this.orderCost = orderCost;
         this.taxCost = taxCost;
@@ -57,10 +54,6 @@ public class Budget {
 
     public Long getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public double getOrderCost() {

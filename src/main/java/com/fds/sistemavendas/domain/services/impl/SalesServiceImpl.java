@@ -97,12 +97,4 @@ public class SalesServiceImpl implements ISalesService {
         var product = productsRepository.getById(id);
         return product.orElse(null);
     }
-
-    // private List<Product> getProductsList(List<OrderItem> itemList) {
-    // return itemList.stream()
-    // .map(orderItem -> productsRepository.getById(orderItem.getProductId()))
-    // .filter(Optional::isPresent)
-    // .map(Optional::get)
-    // .toList();
-    // }
 }

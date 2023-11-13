@@ -80,7 +80,7 @@ public class SalesServiceImpl implements ISalesService {
             budgetToUpdate.setDone(true); // :D
             return budgetRepository.save(budgetToUpdate);
         }
-        throw new SaleNotDoneException("Items not available.");
+        throw new SaleNotDoneException("Unable to complete purchase.");
     }
 
     private Budget getBudgetById(Long id) {

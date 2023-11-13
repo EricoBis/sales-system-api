@@ -1,4 +1,4 @@
-package com.fds.sistemavendas.domain.services.impl;
+package com.fds.sistemavendas.domain.services;
 
 import com.fds.sistemavendas.adapters.controller.exception.SaleNotDoneException;
 import com.fds.sistemavendas.adapters.repositories.IRepBudget;
@@ -6,10 +6,6 @@ import com.fds.sistemavendas.adapters.repositories.IRepProducts;
 import com.fds.sistemavendas.application.dto.OrderDTO;
 import com.fds.sistemavendas.domain.entities.Budget;
 import com.fds.sistemavendas.domain.entities.Product;
-import com.fds.sistemavendas.domain.services.IDiscountCalc;
-import com.fds.sistemavendas.domain.services.ISalesService;
-import com.fds.sistemavendas.domain.services.IStorageService;
-import com.fds.sistemavendas.domain.services.ITaxCalc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,15 +17,15 @@ import java.util.stream.Collectors;
 
 
 @Service
-public class SalesServiceImpl implements ISalesService {
+public class SalesService {
     private final IRepBudget budgetRepository;
     private final IRepProducts productsRepository;
-    private IDiscountCalc discountCalc;
-    private ITaxCalc taxCalc;
-    private IStorageService storageService;
+    private final IDiscountCalc discountCalc;
+    private final ITaxCalc taxCalc;
+    private final StorageService storageService;
 
     @Autowired
-    public SalesServiceImpl(IRepBudget budgetRepository, IRepProducts productsRepository, ITaxCalc taxCalc, IDiscountCalc discountCalc, IStorageService storageService) {
+    public SalesService(IRepBudget budgetRepository, IRepProducts productsRepository, ITaxCalc taxCalc, IDiscountCalc discountCalc, StorageService storageService) {
         this.budgetRepository = budgetRepository;
         this.productsRepository = productsRepository;
         this.discountCalc = discountCalc;
@@ -37,8 +33,7 @@ public class SalesServiceImpl implements ISalesService {
         this.storageService = storageService;
     }
 
-    @Override
-    public Budget createOrUpdateBudget(OrderDTO order) {
+    public Budget createBudget(OrderDTO order) {
         Budget newBudget;
 
         double orderCost = order.getItemList().stream().mapToDouble(item -> {
@@ -72,7 +67,6 @@ public class SalesServiceImpl implements ISalesService {
         return budgetRepository.save(newBudget);
     }
 
-    @Override
     public Budget executeOrder(Long id) {
         Budget budgetToUpdate = getBudgetById(id);
         if (storageService.ProductsAreAvailable(budgetToUpdate.getItems()) && budgetToUpdate.getExpirationDate().isAfter(LocalDateTime.now())) {
@@ -89,7 +83,7 @@ public class SalesServiceImpl implements ISalesService {
 
     private List<Budget> getBudgetsByClientId(Long clientId) {
         return budgetRepository.getByClientId(clientId).stream()
-                .filter(budget -> budget.isDone() == true)
+                .filter(Budget::isDone)
                 .collect(Collectors.toList());
     }
 

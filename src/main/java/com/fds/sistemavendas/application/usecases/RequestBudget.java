@@ -3,23 +3,23 @@ package com.fds.sistemavendas.application.usecases;
 import com.fds.sistemavendas.application.dto.BudgetDTO;
 import com.fds.sistemavendas.application.dto.OrderDTO;
 import com.fds.sistemavendas.domain.entities.Budget;
-import com.fds.sistemavendas.domain.services.ISalesService;
 
+import com.fds.sistemavendas.domain.services.SalesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RequestBudget {
 
-    private final ISalesService salesService;
+    private final SalesService salesService;
 
     @Autowired
-    public RequestBudget(ISalesService salesService) {
+    public RequestBudget(SalesService salesService) {
         this.salesService = salesService;
     }
 
     public BudgetDTO createOrUpdateBudget(OrderDTO order) {
-        Budget budget = salesService.createOrUpdateBudget(order);
+        Budget budget = salesService.createBudget(order);
         return new BudgetDTO(budget.getId(),
                              budget.getOrderCost(),
                              budget.getTaxCost(),

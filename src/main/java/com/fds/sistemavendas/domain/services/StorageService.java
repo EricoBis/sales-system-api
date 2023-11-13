@@ -1,11 +1,10 @@
-package com.fds.sistemavendas.domain.services.impl;
+package com.fds.sistemavendas.domain.services;
 
 import com.fds.sistemavendas.adapters.repositories.IRepItemStorage;
 import com.fds.sistemavendas.adapters.repositories.IRepProducts;
 import com.fds.sistemavendas.domain.entities.OrderItem;
 import com.fds.sistemavendas.domain.entities.Product;
 import com.fds.sistemavendas.domain.entities.StorageItem;
-import com.fds.sistemavendas.domain.services.IStorageService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,13 +13,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class StorageServiceImpl implements IStorageService {
+public class StorageService {
 
     private final IRepItemStorage itemsRep;
     private final IRepProducts productsRep;
 
     @Autowired
-    public StorageServiceImpl(IRepItemStorage itemsRep, IRepProducts productsRep){
+    public StorageService(IRepItemStorage itemsRep, IRepProducts productsRep){
         this.itemsRep = itemsRep;
         this.productsRep = productsRep;
     }
@@ -33,7 +32,6 @@ public class StorageServiceImpl implements IStorageService {
         return productsRep.getAll().stream().filter(product -> productIds.contains(product.getId())).toList();
     }
 
-    @Override
     public Optional<Product> findProduct(Long id) {
         return productsRep.getById(id);
     }
@@ -41,8 +39,7 @@ public class StorageServiceImpl implements IStorageService {
     public boolean ProductsAreAvailable(List<OrderItem> items) {
         return items.stream().allMatch(item -> {
             StorageItem stItem = itemsRep.findByProductId(item.getProductId());
-            if (item.getAmount() > stItem.getCurrQuantity()) return false;
-            else return true;
+            return item.getAmount() <= stItem.getCurrQuantity();
         });
     }
 

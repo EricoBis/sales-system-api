@@ -1,9 +1,8 @@
-package com.fds.sistemavendas.domain.services.impl;
+package com.fds.sistemavendas.domain.services;
 
 import com.fds.sistemavendas.adapters.repositories.IRepBudget;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.fds.sistemavendas.domain.services.IReportService;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,15 +10,14 @@ import java.util.Map;
 
 import com.fds.sistemavendas.domain.entities.Budget;
 @Service
-public class ReportServiceImpl implements IReportService {
+public class ReportService  {
     private final IRepBudget budgetRepository;
 
     @Autowired
-    public ReportServiceImpl(IRepBudget budgetRepository){
+    public ReportService(IRepBudget budgetRepository){
         this.budgetRepository = budgetRepository;
     }
 
-    @Override
     public Map<String, Object> generateStatistics() {
         List<Budget> budgets = budgetRepository.getAll();
         Map<String, Object> statistics = new HashMap<>();

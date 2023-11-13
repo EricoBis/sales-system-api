@@ -2,6 +2,7 @@ DROP TABLE tb_product IF EXISTS;
 DROP TABLE tb_storage_item IF EXISTS;
 DROP TABLE tb_budget IF EXISTS;
 DROP TABLE tb_order_item IF EXISTS;
+DROP TABLE tb_client IF EXISTS;
 
 CREATE TABLE tb_product (
                             price float(53) not null,
@@ -36,6 +37,15 @@ CREATE TABLE tb_budget (
                             done boolean,
                             date_time timestamp(6),
                             expiration_date timestamp(6),
+                            primary key (id)
+);
+
+CREATE TABLE tb_client (
+                            id bigint not null,
+                            name varchar(100) not null,
+                            email varchar(100) not null,
+                            password varchar(100) not null,
+                            role varchar(20) not null,
                             primary key (id)
 );
 
@@ -105,3 +115,10 @@ VALUES
     (44, 3, 50000, 15, 0, 50015, TRUE, '2023-09-13 05:25:09', '2023-12-23 15:30:00'),
     (45, 3, 50000, 15, 0, 50015, TRUE, '2023-08-03 07:55:00', '2023-12-23 15:30:00'),
     (46, 3, 50000, 15, 0, 50015, TRUE, '2023-11-01 19:52:52', '2023-12-23 15:30:00');
+
+INSERT INTO tb_client (id, name, email, password, role)
+VALUES
+    (1, 'Joao Almeida', 'joao.almeida@gmail.com', '12345', 'USER'),
+    (2, 'Maria Joaquina', 'maria.jo@gmail.com', '12345', 'USER'),
+    (3, 'Paula Duarte', 'p.duarte@gmail.com', '12345', 'USER'),
+    (4, 'Eduardo da Silva', 'eduardo.silva@gmail.com', '12345', 'USER'),

@@ -121,4 +121,4 @@ VALUES
     (1, 'Joao Almeida', 'joao.almeida@gmail.com', '12345', 'USER'),
     (2, 'Maria Joaquina', 'maria.jo@gmail.com', '12345', 'USER'),
     (3, 'Paula Duarte', 'p.duarte@gmail.com', '12345', 'USER'),
-    (4, 'Eduardo da Silva', 'eduardo.silva@gmail.com', '12345', 'USER'),
+    (4, 'Eduardo da Silva', 'eduardo.silva@gmail.com', '12345', 'USER');

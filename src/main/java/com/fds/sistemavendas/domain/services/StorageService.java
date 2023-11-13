@@ -1,7 +1,7 @@
 package com.fds.sistemavendas.domain.services;
 
-import com.fds.sistemavendas.adapters.repositories.IRepItemStorage;
-import com.fds.sistemavendas.adapters.repositories.IRepProducts;
+import com.fds.sistemavendas.domain.repositories.IRepItemStorage;
+import com.fds.sistemavendas.domain.repositories.IRepProducts;
 import com.fds.sistemavendas.domain.entities.OrderItem;
 import com.fds.sistemavendas.domain.entities.Product;
 import com.fds.sistemavendas.domain.entities.StorageItem;

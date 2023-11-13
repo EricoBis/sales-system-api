@@ -1,4 +1,4 @@
-package com.fds.sistemavendas.adapters.repositories;
+package com.fds.sistemavendas.domain.repositories;
 
 import java.util.List;
 

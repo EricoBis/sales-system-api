@@ -1,6 +1,6 @@
 package com.fds.sistemavendas.domain.services;
 
-import com.fds.sistemavendas.adapters.repositories.IRepBudget;
+import com.fds.sistemavendas.domain.repositories.IRepBudget;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

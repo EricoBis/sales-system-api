@@ -1,6 +1,6 @@
 package com.fds.sistemavendas.adapters.repositories.impl;
 
-import com.fds.sistemavendas.adapters.repositories.IRepBudget;
+import com.fds.sistemavendas.domain.repositories.IRepBudget;
 import com.fds.sistemavendas.adapters.repositories.jpa.IRepBudgetJPA;
 import com.fds.sistemavendas.domain.entities.Budget;
 
@@ -11,12 +11,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class RepBudgetORM implements IRepBudget{
+public class RepBudget implements IRepBudget{
 
     IRepBudgetJPA budgetRep;
 
     @Autowired
-    public RepBudgetORM(IRepBudgetJPA budgetRep) {
+    public RepBudget(IRepBudgetJPA budgetRep) {
         this.budgetRep = budgetRep;
     }
 

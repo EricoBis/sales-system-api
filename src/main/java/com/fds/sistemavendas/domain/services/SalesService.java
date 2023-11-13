@@ -1,8 +1,8 @@
 package com.fds.sistemavendas.domain.services;
 
 import com.fds.sistemavendas.adapters.controller.exception.SaleNotDoneException;
-import com.fds.sistemavendas.adapters.repositories.IRepBudget;
-import com.fds.sistemavendas.adapters.repositories.IRepProducts;
+import com.fds.sistemavendas.domain.repositories.IRepBudget;
+import com.fds.sistemavendas.domain.repositories.IRepProducts;
 import com.fds.sistemavendas.application.dto.OrderDTO;
 import com.fds.sistemavendas.domain.entities.Budget;
 import com.fds.sistemavendas.domain.entities.Product;

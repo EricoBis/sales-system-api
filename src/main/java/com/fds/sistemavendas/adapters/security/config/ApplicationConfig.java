@@ -1,6 +1,6 @@
 package com.fds.sistemavendas.adapters.security.config;
 
-import com.fds.sistemavendas.adapters.repositories.IRepClients;
+import com.fds.sistemavendas.domain.repositories.IRepClients;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

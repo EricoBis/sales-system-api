@@ -6,6 +6,7 @@ import com.fds.sistemavendas.domain.entities.OrderItem;
 import com.fds.sistemavendas.domain.entities.Product;
 import com.fds.sistemavendas.domain.entities.StorageItem;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,14 +37,15 @@ public class StorageService {
         return productsRep.getById(id);
     }
 
-    public boolean ProductsAreAvailable(List<OrderItem> items) {
+    public boolean productsAreAvailable(List<OrderItem> items) {
         return items.stream().allMatch(item -> {
             StorageItem stItem = itemsRep.findByProductId(item.getProductId());
             return item.getAmount() <= stItem.getCurrQuantity();
         });
     }
 
-    public void UpdateStorage(List<OrderItem> items) {
+    @Transactional
+    public void updateStorage(List<OrderItem> items) {
         for (OrderItem orderItem : items) {
             StorageItem stItem = itemsRep.findByProductId(orderItem.getProductId());
             stItem.setCurrQuantity(stItem.getCurrQuantity() - orderItem.getAmount());

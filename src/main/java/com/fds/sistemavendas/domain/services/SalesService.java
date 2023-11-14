@@ -72,13 +72,13 @@ public class SalesService {
         if(budgetToUpdate.isDone()){
             throw new SaleNotDoneException("Budget already done");
         }
-        if (!storageService.ProductsAreAvailable(budgetToUpdate.getItems())) {
+        if (!storageService.productsAreAvailable(budgetToUpdate.getItems())) {
             throw new SaleNotDoneException("Items not available");
         }
         if (!budgetToUpdate.getExpirationDate().isAfter(LocalDateTime.now())) {
             throw new SaleNotDoneException("Budget already expired");
         }
-        storageService.UpdateStorage(budgetToUpdate.getItems());
+        storageService.updateStorage(budgetToUpdate.getItems());
         budgetToUpdate.setDone(true);
         return budgetRepository.save(budgetToUpdate);
     }

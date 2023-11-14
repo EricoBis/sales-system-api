@@ -62,7 +62,7 @@ public class SalesService {
             expirationDate = now.plusDays(21);
         }
 
-        newBudget = new Budget(order.getId(), order.getClientId(), orderCost, taxCost, discount, totalCost, expirationDate, order.getItemList(), now);
+        newBudget = new Budget(order.getClientId(), orderCost, taxCost, discount, totalCost, expirationDate, order.getItemList(), now);
 
         return budgetRepository.save(newBudget);
     }

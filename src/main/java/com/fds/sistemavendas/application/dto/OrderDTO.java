@@ -5,19 +5,12 @@ import java.util.List;
 import com.fds.sistemavendas.domain.entities.OrderItem;
 
 public class OrderDTO {
-
-    private Long budgetId;
     private Long clientId;
     private List<OrderItem> itemList;
 
-    public OrderDTO(Long budgetId, Long clientId, List<OrderItem> itemList) {
-        this.budgetId = budgetId;
+    public OrderDTO(Long clientId, List<OrderItem> itemList) {
         this.clientId = clientId;
         this.itemList = itemList;
-    }
-    
-    public Long getId() {
-        return budgetId;
     }
 
     public Long getClientId() {

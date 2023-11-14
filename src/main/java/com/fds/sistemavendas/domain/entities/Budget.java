@@ -37,9 +37,8 @@ public class Budget {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<OrderItem> items;
 
-    public Budget(Long id, Long clientId, double orderCost, double taxCost, double discount, double totalCost, 
+    public Budget(Long clientId, double orderCost, double taxCost, double discount, double totalCost,
             LocalDateTime expirationDate, List<OrderItem> items, LocalDateTime date) {
-        this.id = id;
         this.clientId = clientId;
         this.orderCost = orderCost;
         this.taxCost = taxCost;

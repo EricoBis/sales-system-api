@@ -69,12 +69,18 @@ public class SalesService {
 
     public Budget executeOrder(Long id) {
         Budget budgetToUpdate = getBudgetById(id);
-        if (storageService.ProductsAreAvailable(budgetToUpdate.getItems()) && budgetToUpdate.getExpirationDate().isAfter(LocalDateTime.now())) {
-            storageService.UpdateStorage(budgetToUpdate.getItems());
-            budgetToUpdate.setDone(true); // :D
-            return budgetRepository.save(budgetToUpdate);
+        if(budgetToUpdate.isDone()){
+            throw new SaleNotDoneException("Budget already done");
         }
-        throw new SaleNotDoneException("Unable to complete purchase.");
+        if (!storageService.ProductsAreAvailable(budgetToUpdate.getItems())) {
+            throw new SaleNotDoneException("Items not available");
+        }
+        if (!budgetToUpdate.getExpirationDate().isAfter(LocalDateTime.now())) {
+            throw new SaleNotDoneException("Budget already expired");
+        }
+        storageService.UpdateStorage(budgetToUpdate.getItems());
+        budgetToUpdate.setDone(true);
+        return budgetRepository.save(budgetToUpdate);
     }
 
     private Budget getBudgetById(Long id) {

@@ -1,5 +1,6 @@
 package com.fds.sistemavendas.adapters.security.auth;
 
+import com.fds.sistemavendas.adapters.controller.exception.UserAlreadyExists;
 import com.fds.sistemavendas.adapters.security.user.Role;
 import com.fds.sistemavendas.adapters.security.config.JwtService;
 import com.fds.sistemavendas.domain.repositories.IRepClients;
@@ -20,6 +21,10 @@ public class AuthenticationService {
     private final AuthenticationManager authManager;
 
     public AuthenticationResponse register(RegisterRequest request) {
+        var clientExists = repository.findByEmail(request.getEmail());
+        if(clientExists.isPresent())
+            throw new UserAlreadyExists("User with this email already exists");
+
         var client = Client.builder()
                 .name(request.getName())
                 .email(request.getEmail())

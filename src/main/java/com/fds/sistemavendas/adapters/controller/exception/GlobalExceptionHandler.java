@@ -21,7 +21,12 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(SaleNotDoneException.class)
-    public ResponseEntity<String> saleNotDoneException(SaleNotDoneException saleNotDoneException) {
+    public ResponseEntity<String> handleSaleNotDoneException(SaleNotDoneException saleNotDoneException) {
         return new ResponseEntity<>(saleNotDoneException.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(UserAlreadyExists.class)
+    public ResponseEntity<String> handleUserAlreadyExists(UserAlreadyExists userAlreadyExists) {
+        return new ResponseEntity<>(userAlreadyExists.getMessage(), HttpStatus.CONFLICT);
     }
 }

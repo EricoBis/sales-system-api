@@ -83,7 +83,7 @@ public class SalesService {
         return budgetRepository.save(budgetToUpdate);
     }
 
-    private Budget getBudgetById(Long id) {
+    public Budget getBudgetById(Long id) {
         return budgetRepository.getById(id).get();
     }
 

@@ -18,7 +18,7 @@ public class RequestBudget {
         this.salesService = salesService;
     }
 
-    public BudgetDTO createOrUpdateBudget(OrderDTO order) {
+    public BudgetDTO create(OrderDTO order) {
         Budget budget = salesService.createBudget(order);
         return new BudgetDTO(budget.getId(),
                              budget.getOrderCost(),

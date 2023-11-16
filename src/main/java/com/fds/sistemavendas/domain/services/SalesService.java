@@ -45,7 +45,7 @@ public class SalesService {
 
         double taxCost = taxCalc.calculateTax(orderCost);
 
-        List<Budget> clientsBudgets = getBudgetsByClientId(order.getClientId());
+        List<Budget> clientsBudgets = getDoneBudgetsByClientId(order.getClientId());
 
         double discount = discountCalc.calculateDiscount(clientsBudgets, order, orderCost);
 
@@ -87,7 +87,11 @@ public class SalesService {
         return budgetRepository.getById(id).get();
     }
 
-    private List<Budget> getBudgetsByClientId(Long clientId) {
+    public List<Budget> getAllBudgetsByClientId(Long clientId) {
+        return budgetRepository.getByClientId(clientId);
+    }
+
+    private List<Budget> getDoneBudgetsByClientId(Long clientId) {
         return budgetRepository.getByClientId(clientId).stream()
                 .filter(Budget::isDone)
                 .collect(Collectors.toList());

@@ -26,9 +26,8 @@ public class ClientController {
         return ResponseEntity.ok(budgets);
     }
 
-    @GetMapping("/{id}/budgets")
-    public ResponseEntity<BudgetDTO> getLastClientBudget(@PathVariable(value = "id") Long id,
-            @RequestParam(value = "last", defaultValue = "false") boolean last) {
+    @GetMapping("/{id}/budgets/last")
+    public ResponseEntity<BudgetDTO> getLastClientBudget(@PathVariable(value = "id") Long id) {
         var budget = obtainBudgetUC.findLastClientBudget(id);
         return ResponseEntity.ok(budget);
     }

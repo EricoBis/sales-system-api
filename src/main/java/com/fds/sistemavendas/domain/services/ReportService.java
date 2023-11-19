@@ -17,10 +17,12 @@ import com.fds.sistemavendas.domain.entities.Budget;
 @Service
 public class ReportService {
     private final IRepBudget budgetRepository;
+    private final IRepClients clientsRepository;
 
     @Autowired
-    public ReportService(IRepBudget budgetRepository) {
+    public ReportService(IRepBudget budgetRepository, IRepClients clientsRepository) {
         this.budgetRepository = budgetRepository;
+        this.clientsRepository = clientsRepository;
     }
     public Map<String, Object> getClientWithMostPurchases() {
         List<Budget> budgets = budgetRepository.getAll();
@@ -36,7 +38,7 @@ public class ReportService {
             Long clientIdWithMostPurchases = entry.getKey();
             long numberOfPurchases = entry.getValue();
 
-            Optional<Client> clientWithMostPurchases = IRepClients.findById(clientIdWithMostPurchases);
+            Optional<Client> clientWithMostPurchases = clientsRepository.findById(clientIdWithMostPurchases);
 
             statistics.put("Client with Most Purchases", clientWithMostPurchases);
             statistics.put("Number of Purchases", numberOfPurchases);

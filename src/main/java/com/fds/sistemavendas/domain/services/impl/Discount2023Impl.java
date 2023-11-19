@@ -1,6 +1,8 @@
 package com.fds.sistemavendas.domain.services.impl;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.context.annotation.Primary;
@@ -21,39 +23,48 @@ public class Discount2023Impl implements IDiscountCalc {
         double discount = 0;
         double avg = 0;
 
-        //precisa ter feito mais de 3 compras?
-        if (clientsBudgets.size() < 3) {
-            return 0;
-        }
+        clientsBudgets.get(0).getDate();
+        
+        if (clientsBudgets.size() > 2) {
+            Collections.sort(clientsBudgets, new Comparator<Budget>() {
+                @Override
+                public int compare(Budget b1, Budget b2) {
+                    return b2.getDate().compareTo(b1.getDate());
+                }
+            });
 
-        // if(clientsBudgets.size() >= 3) {
+            int nBudgetsInAvg = 0;
             for(int i = 0; i < clientsBudgets.size(); i++) {
-                avg += clientsBudgets.get(i).getTotalCost();
+                // add only done budgets
+                if (clientsBudgets.get(i).isDone()) {
+                    avg += clientsBudgets.get(i).getTotalCost();
+                    nBudgetsInAvg++;
+                }
+
+                if (nBudgetsInAvg == 3)
+                    break;
             }
-        // }
-        // else {
-            
-        // }
 
-        avg = avg / clientsBudgets.size();
+            avg = avg / 3;
 
-        if (avg >= 50000) discount = 30;
-        else if(avg > 10000) {
-            discount = 10;
-            avg -= 10000;
-
-            double iMax = avg / 10000;
-
-            for(int i = 0; i < iMax; i++) {
-                if(avg <= 0) break;
-                if((avg / 10000) <= 4) {
-                    discount += Math.floor((avg / 10000) * 5);
-                    avg -= 10000;
+            if (avg >= 50000) discount = 30;
+            else if(avg > 10000) {
+                discount = 10;
+                avg -= 10000;
+    
+                double iMax = avg / 10000;
+    
+                for(int i = 0; i < iMax; i++) {
+                    if(avg <= 0) break;
+                    if((avg / 10000) <= 4) {
+                        discount += Math.floor((avg / 10000) * 5);
+                        avg -= 10000;
+                    }
                 }
             }
         }
-
-        //Clientes com mais de 10 compras nos últimos 6 meses recebem desconto de 25%, indiferente do valor
+        
+        // Clientes com mais de 10 compras nos últimos 6 meses recebem desconto de 25%, indiferente do valor
         if(discount < 25) {
             List<Budget> lastSixMonths = clientsBudgets.stream()
                                                     .filter(budget -> budget.getDate().isAfter(LocalDateTime.now().minusMonths(6)))

@@ -8,21 +8,25 @@ public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
-    private Long orderId;
+    private Long id;
 
     @Column(name = "product_id")
     private Long productId;
     
     private int amount;
     
-    public OrderItem(Long orderId, Long productId, int amount) {
-        this.orderId = orderId;
+    public OrderItem(Long id, Long productId, int amount) {
+        this.id = id;
         this.productId = productId;
         this.amount = amount;
     }
 
     protected OrderItem(){}
-    
+
+    public Long getId() {
+        return id;
+    }
+
     public Long getProductId() {
         return productId;
     }
@@ -30,5 +34,6 @@ public class OrderItem {
     public int getAmount() {
         return amount;
     }
-    
+
+
 }

@@ -1,7 +1,11 @@
 DROP TABLE tb_product IF EXISTS;
+
 DROP TABLE tb_storage_item IF EXISTS;
+
+DROP TABLE tb_budget_items IF EXISTS;
 DROP TABLE tb_budget IF EXISTS;
 DROP TABLE tb_order_item IF EXISTS;
+
 DROP TABLE tb_client IF EXISTS;
 
 CREATE TABLE tb_product (
@@ -39,6 +43,25 @@ CREATE TABLE tb_budget (
                             expiration_date timestamp(6),
                             primary key (id)
 );
+
+-- Entidade de Relacionamento: tb_budget <- tb_order_item
+CREATE TABLE tb_budget_items (
+                                 tb_budget_id BIGINT NOT NULL,
+                                 items_id BIGINT NOT NULL
+);
+
+ALTER TABLE IF EXISTS tb_budget_items
+    ADD CONSTRAINT FKf7s316qj121ntnh67fup5su3k
+    FOREIGN KEY (items_id)
+    REFERENCES tb_order_item;
+
+ALTER TABLE IF EXISTS tb_budget_items
+    ADD CONSTRAINT FKgae2natigo6enlfkwvaa85fcu
+    FOREIGN KEY (tb_budget_id)
+    REFERENCES tb_budget;
+
+
+
 
 CREATE TABLE tb_client (
                             id bigint not null,
@@ -96,8 +119,14 @@ VALUES
 
 INSERT INTO tb_budget (id, id_client, order_cost, tax_cost, discount, total_cost, done, date_time, expiration_date)
 VALUES
-    (10, 1, 20000, 15, 0, 20015, TRUE, '2023-10-02 15:30:00', '2023-12-23 15:30:00'),
-    (20, 1, 20000, 15, 0, 20015, TRUE, '2023-09-05 17:45:05', '2023-12-23 15:30:00'),
+    (1000, -2, 6975.59, 697.56, 0.0, 10673.16, TRUE, '2023-11-19 00:28:54.836931', '2023-12-10 00:28:54.836931'),
+    (1001, -2, 5005.6, 500.56, 0.0, 10506.16, TRUE, '2023-11-19 01:06:48.052561', '2023-12-10 01:06:48.052561'),
+    (1003, -2, 6394.0, 639.40, 0.0, 10033.4, TRUE, '2023-11-19 01:15:48.730408', '2023-12-10 01:15:48.730408'),
+    (1004, -2, 1399.3, 139.93, 139.93, 1399.3, FALSE, '2023-11-19 01:30:31.747534', '2023-12-10 01:30:31.747534'),
+    (1005, -2, 179.88, 17.988, 17.988, 179.88, FALSE, '2023-10-28 01:43:31.632198', '2023-11-18 01:43:31.632198'),
+
+    (28, 1, 20000, 15, 0, 20015, TRUE, '2023-10-02 15:30:00', '2023-12-23 15:30:00'),
+    (29, 1, 20000, 15, 0, 20015, TRUE, '2023-09-05 17:45:05', '2023-12-23 15:30:00'),
     (30, 1, 20000, 15, 0, 20015, TRUE, '2023-11-03 06:05:10', '2023-12-23 15:30:00'),
     (31, 2, 20000, 15, 0, 20015, TRUE, '2023-10-11 08:30:57', '2023-12-23 15:30:00'),
     (32, 2, 20000, 15, 0, 20015, TRUE, '2023-09-30 12:59:55', '2023-12-23 15:30:00'),
@@ -116,6 +145,41 @@ VALUES
     (45, 3, 50000, 15, 0, 50015, TRUE, '2023-08-03 07:55:00', '2023-12-23 15:30:00'),
     (46, 3, 50000, 15, 0, 50015, TRUE, '2023-11-01 19:52:52', '2023-12-23 15:30:00'),
     (47, 3, 50000, 15, 0, 50015, TRUE, '2023-09-01 19:52:52', '2023-10-23 15:30:00');
+
+INSERT INTO tb_order_item (id, product_id, amount)
+VALUES
+    (10000, 2, 100),
+    (10001, 3, 80),
+    (10002, 4, 70),
+    (10003, 5, 90),
+    (10004, 6, 100),
+    (20000, 8, 200),
+    (20001, 7, 80),
+    (20002, 6, 70),
+    (20003, 10, 90),
+    (30000, 11, 200),
+    (30001, 13, 400),
+    (40000, 2, 70),
+    (50000, 4, 5),
+    (50001, 12, 7);
+
+
+INSERT INTO tb_budget_items (tb_budget_id, items_id)
+VALUES
+    (1000, 10000),
+    (1000, 10001),
+    (1000, 10002),
+    (1000, 10003),
+    (1000, 10004),
+    (1001, 20000),
+    (1001, 20001),
+    (1001, 20002),
+    (1001, 20003),
+    (1003, 30000),
+    (1003, 30001),
+    (1004, 40000),
+    (1005, 50000),
+    (1005, 50001);
 
 INSERT INTO tb_client (id, name, email, password, role)
 VALUES

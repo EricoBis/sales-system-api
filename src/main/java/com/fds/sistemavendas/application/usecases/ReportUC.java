@@ -18,7 +18,15 @@ public class ReportUC {
         this.reportService = reportService;
     }
 
-    public Map<String, Object> generateStatistics() {
-        return reportService.generateStatistics();
+    public Map<String, Object> getClientWithMostPurchases() {
+        return reportService.getClientWithMostPurchases();
+    }
+
+    public Map<String, Object> getAverageSales() {
+        return reportService.getAverageSales();
+    }
+
+    public Map<String, Object> getExpensivePurchases() {
+        return reportService.getExpensivePurchases();
     }
 }

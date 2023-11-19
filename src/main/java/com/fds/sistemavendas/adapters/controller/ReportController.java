@@ -22,9 +22,17 @@ public class ReportController {
         this.useCaseReport = useCase;
     }
 
-    @GetMapping("/statistics")
-    public Map<String, Object> getStatistics() {
-        return useCaseReport.generateStatistics();
+    @GetMapping("/getClientWithMostPurchases")
+    public Map<String, Object> getClientWithMostPurchases() {
+        return useCaseReport.getClientWithMostPurchases();
+    }
+    @GetMapping("/getAverageSales")
+    public Map<String, Object> getAverageSales() {
+        return useCaseReport.getAverageSales();
+    }
+    @GetMapping("/getExpensivePurchases")
+    public Map<String, Object> getExpensivePurchases() {
+        return useCaseReport.getExpensivePurchases();
     }
 }
 

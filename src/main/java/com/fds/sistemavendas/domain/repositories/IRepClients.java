@@ -9,7 +9,7 @@ public interface IRepClients {
 
     Client save(Client c);
 
-    Optional<Client> findById(Long id);
+    static Optional<Client> findById(Long id);
 
     Optional<Client> findByEmail(String email);
 }

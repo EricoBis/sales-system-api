@@ -42,6 +42,10 @@ public class Client implements UserDetails{
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
+    public Long getId() {
+        return id;
+    }
+
     @Override
     public String getPassword() {
         return password;

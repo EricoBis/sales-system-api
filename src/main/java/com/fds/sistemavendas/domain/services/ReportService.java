@@ -1,5 +1,6 @@
 package com.fds.sistemavendas.domain.services;
 
+import com.fds.sistemavendas.application.dto.ClientDTO;
 import com.fds.sistemavendas.domain.entities.Client;
 import com.fds.sistemavendas.domain.repositories.IRepBudget;
 import com.fds.sistemavendas.domain.repositories.IRepClients;
@@ -38,9 +39,12 @@ public class ReportService {
             Long clientIdWithMostPurchases = entry.getKey();
             long numberOfPurchases = entry.getValue();
 
-            Optional<Client> clientWithMostPurchases = clientsRepository.findById(clientIdWithMostPurchases);
+            Client clientWithMostPurchases = clientsRepository.findById(clientIdWithMostPurchases).get();
+            ClientDTO clientDTO = new ClientDTO(clientWithMostPurchases.getId(),
+                                                clientWithMostPurchases.getName(),
+                                                clientWithMostPurchases.getEmail());
 
-            statistics.put("Client with Most Purchases", clientWithMostPurchases);
+            statistics.put("Client with Most Purchases", clientDTO);
             statistics.put("Number of Purchases", numberOfPurchases);
         });
 

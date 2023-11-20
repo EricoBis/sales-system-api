@@ -23,7 +23,7 @@ public class Discount2023Impl implements IDiscountCalc {
         double discount = 0;
         double avg = 0;
 
-        clientsBudgets.get(0).getDate();
+        if(clientsBudgets.isEmpty()) return 0.0;
         
         if (clientsBudgets.size() > 2) {
             Collections.sort(clientsBudgets, new Comparator<Budget>() {
